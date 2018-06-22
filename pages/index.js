@@ -2,6 +2,7 @@ import React, {Component}from 'react';
 import factory from "../ethereum/factory";
 import { Card, Button } from 'semantic-ui-react';
 import Layout from '../components/layout';
+import {Link} from '../routes'
 
 
 class ProductTrackIndex extends Component {
@@ -18,18 +19,22 @@ return(
     <Card.Group>
     <Card>
       <Card.Content>
+      
         <Card.Header>Add New Product</Card.Header>
         <Card.Description>
         Add a new product to track on the blockachain
         </Card.Description>
+       
       </Card.Content>
       <Card.Content extra>
-       
+      <Link route ="/trackPages/addProduct">
+      <a>
           <Button fluid primary
           content = "Add Product"
           icon= "add circle"
           />
-            
+          </a>
+        </Link>
          
           
       
@@ -62,13 +67,14 @@ return(
         </Card.Description>
         </Card.Content>
         <Card.Content extra>
-        
+        <Link route= "/trackPages/trackProduct">
+        <a>
         <Button fluid primary
         content = "Track Product"
         icon= "find"
-        
         />
-            
+        </a>
+        </Link>
         
         </Card.Content>
     </Card>

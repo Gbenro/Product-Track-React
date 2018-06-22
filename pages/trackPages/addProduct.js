@@ -3,6 +3,9 @@ import Layout from'../../components/layout';
 import { Button, Form, Message} from 'semantic-ui-react'
 import factory from '../../ethereum/factory';
 import web3 from '../../ethereum/web3';
+import {Router} from '../../routes';
+
+
 class AddProduct extends Component{
 
     state= {
@@ -11,15 +14,19 @@ class AddProduct extends Component{
         product_number:'',
         product_secret: '',
         product_location:'',
-        errorMessage:''
+        errorMessage:'',
+        loading:false,
+        address:''
 
     };
 
     onSubmit = async (event) =>{
         event.preventDefault();
+
+        this.setState({loading:true, errorMessage:''});
         try{
         const accounts = await web3.eth.getAccounts();
-        await factory.methods.
+        const PAddress= await factory.methods.
         createProductToTrack(
             this.state.product_name, 
             this.state.product_type,
@@ -29,11 +36,12 @@ class AddProduct extends Component{
         ). send({
             from: accounts[0]
         });
+        Router.pushRoute('/');
     }catch (err){
             this.setState({errorMessage:err.message});
     }
 
-
+this.setState({loading:false, address:PAddress});
     };
 
 
@@ -86,7 +94,7 @@ class AddProduct extends Component{
                 />
                 </Form.Field>
                 <Message error header= "Oops!" content = {this.state.errorMessage}/>
-                <Button type='submit'>Submit</Button>
+                <Button loading={this.state.loading} type='submit'>Submit</Button>
             </Form>
             </Layout>
         );

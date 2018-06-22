@@ -20,6 +20,6 @@
   },
   "scripts": {
     "test": "mocha",
-    "dev": "next dev"
+    "dev": "node server.js"
   }
 }

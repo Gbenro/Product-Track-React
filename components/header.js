@@ -1,28 +1,36 @@
 import React from 'react';
 import {Menu, Input} from 'semantic-ui-react';
+import {Link} from '../routes';
 
 export default() =>{
     return (
         <div>
           <Menu style={{marginTop:'10px'}} >
-            <Menu.Item name='Home' 
-            //active={activeItem === 'home'} onClick={this.handleItemClick} 
-            />
-            <Menu.Item
-              name='Add Product'
-              //active={activeItem === 'AddProduct'}
-              //onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name='Track Product'
-              //active={activeItem === 'TrackProduct'}
-              //onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name='Add Location'
-             // active={activeItem === 'AddLocation'}
-              //onClick={this.handleItemClick}
-            />
+            <Link route ="/"> 
+            
+           <a className= 'item'>
+           Home
+           </a>
+            </Link>
+
+            <Link route ="/trackPages/addProduct"> 
+           <a className= 'item'>
+          Add Product
+           </a>
+            </Link>
+
+            <Link route ="/"> 
+           <a className= 'item'>
+          Add Location
+           </a>
+            </Link>
+
+            <Link route ="/trackPages/trackProduct"> 
+           <a className= 'item'>
+           Track Product
+           </a>
+            </Link>
+            
             <Menu.Menu position='right'>
               <Menu.Item>
                 <Input icon='search' placeholder='Search 0x00' />
