@@ -26,7 +26,7 @@ class AddProduct extends Component{
         this.setState({loading:true, errorMessage:''});
         try{
         const accounts = await web3.eth.getAccounts();
-        const PAddress= await factory.methods.
+     await factory.methods.
         createProductToTrack(
             this.state.product_name, 
             this.state.product_type,
@@ -36,12 +36,18 @@ class AddProduct extends Component{
         ). send({
             from: accounts[0]
         });
-        Router.pushRoute('/');
+        const PAddress= await factory.methods.newTrack().call();
+  console.log(PAddress);
+    this.setState({address:PAddress});
+            
+      console.log(`This is the contract address${this.state.address}`)
     }catch (err){
             this.setState({errorMessage:err.message});
     }
-
-this.setState({loading:false, address:PAddress});
+            
+            this.setState({loading:false});
+             Router.pushRoute(`/trackPages/${this.state.address}`);
+           
     };
 
 

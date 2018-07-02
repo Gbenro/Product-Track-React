@@ -49,12 +49,14 @@ return(
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-       
+    <Link route ="/trackPages/addLocation">
+      <a>
       <Button fluid primary
       content = "Add Location"
       icon= "map marker alternate"
       />
-          
+         </a>
+        </Link>  
       
       </Card.Content>
     </Card>

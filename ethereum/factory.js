@@ -3,7 +3,7 @@ import TrackFactory from './build/TrackFactory.json';
 
 const instance = new web3.eth.Contract(
   JSON.parse(TrackFactory.interface),
-  '0x69A8035EFf8bEf3C2b579905877d2FFaA377c7d8'
+  '0x32Aa2D73EDEE4E2F49479B10b860a4F136E61693'
 );
 
 export default instance;

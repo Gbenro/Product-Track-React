@@ -16,40 +16,26 @@ class TrackProduct extends Component{
         product_location:''
     }
   
- 
+
     onSubmit= async (event)=>{
-event.preventDefault();
-
-
- this.setState({loading:true, address:productAddress});
-
-renderViewProduct(productAddress)
-      /*  try{
-            const productTrack = ProductTrack(ProductAddress);
-            const productDetail = await productTrack.methods.newProduct().call();
-            console.log (productDetail);
-    }catch (err){
-            this.setState({errorMessage:err.message});
-    }
-
-this.setState({loading:false, address:ProductAddress});
-
-*/
+        event.preventDefault();
+        this.setState({loading:true});
+        console.log(this.state.productAddress);
+ 
+           Router.pushRoute(`/trackPages/${this.state.productAddress}`);
     } 
 
-    renderViewProduct(address){
-        return ViewProduct(address);
-    }
+    
     
 
     render(){
         return (
             <Layout>
-                <Form onSubmit ={this.onSubmit} error= {!!this.state.errorMessage}>
+                <Form onSubmit ={this.onSubmit} error= {!!this.state.errorMessage} style={{marginTop:'30px'}}>
                 <Form.Field>
-                <label>Product's Contract Address</label>
+                <h2>Enter Product Contract Address</h2>
                 <input 
-                placeholder= 'product Address'
+                placeholder= 'Product Address'
                 value= {this.state.productAddress}
                 onChange= {event =>this.setState({productAddress:event.target.value})}
                 />
@@ -58,6 +44,7 @@ this.setState({loading:false, address:ProductAddress});
                 <Button loading={this.state.loading} type='submit'>Submit</Button>
             </Form>
         
+           
             </Layout>
         );
     }

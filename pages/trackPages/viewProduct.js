@@ -8,14 +8,18 @@ import ProductTrack from '../../ethereum/ProductTrack';
 
 
 
+
 class ViewProduct extends Component{
+    
 
    static async getInitialProps(props){
-        const productTrack = ProductTrack(props.address);
-
+       console.log(props.query.address);
+        const productTrack = ProductTrack(props.query.address);
+console.log(productTrack);
         const productDetail = await productTrack.methods.newProduct().call();
 
-        console.log (productDetail);
+        console.log(productDetail[0]);
+          
         return {
             product_name:productDetail[0],
             product_type:productDetail[1],
@@ -24,7 +28,7 @@ class ViewProduct extends Component{
             product_location:productDetail[4]
     
         };
-
+        
     }
 
     renderCards(){
@@ -33,7 +37,7 @@ class ViewProduct extends Component{
         product_type,
         product_number,
         product_secret,
-        product_location,
+        product_location
         
         } = this.props;
         
@@ -41,9 +45,27 @@ class ViewProduct extends Component{
             {
                 header: "Product Name",
                 description: product_name
+            },
+            {
+                header: "Product Type",
+                description: product_type
+            },
+            {
+                header: "Product Number",
+                description:product_number
+            },
+            {
+                header: "Product Secret",
+                description: product_secret, 
+                style:{font:"20px"}
+            },
+            {
+                header: "Product Location",
+                description:product_location
             }
         ];
         return <Card.Group items={items} />;
+        console.log(this.product_name);
     }
 
 
@@ -52,7 +74,7 @@ render(){
 
     return(
         <Layout>
-        <h3> ViewProduct </h3>
+        <h3> Product Details </h3>
         {this.renderCards()}
         </Layout>
 

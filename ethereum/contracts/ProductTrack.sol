@@ -4,12 +4,13 @@ pragma solidity^0.4.17;
 contract TrackFactory{
     address[] public deployedTracks;
     
-    
-    function createProductToTrack(string name,string productType, uint productId, string secret, string producer) public{
+    address public newTrack ;
+    function createProductToTrack(string name,string productType, uint productId, string secret, string producer) public  {
         
-       address newTrack =  new ProductTrack(name, productType,productId, secret, producer);
+       newTrack =  new ProductTrack(name, productType,productId, secret, producer);
         deployedTracks.push(newTrack);
         
+    
     }
     
     function getDeployedTracks() public view returns(address[]){

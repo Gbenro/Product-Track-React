@@ -17,7 +17,7 @@ beforeEach(async () =>{
     factory = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
     .deploy({data: compiledFactory.bytecode})
     .send({from: accounts[0], gas:'3000000'});// use this version whenever you want to deploy a new contract
-  
+
     await factory.methods.createProductToTrack('Corn flakes','Cereals','20020','with nuts and honey', 'Nestle').send({
       from :accounts[0],
       gas:'1000000'
@@ -37,8 +37,9 @@ beforeEach(async () =>{
     })
 
     it ("Checks if it has the right secret ", async ()=>{
-
+       
         let nProduct = await product.methods.newProduct.call();
+  
         assert('with nuts and honey', nProduct.secret);
     })
     it ("Checks if product is from Manufacturer ", async ()=>{
