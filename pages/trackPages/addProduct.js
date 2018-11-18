@@ -25,23 +25,23 @@ class AddProduct extends Component{
 
         this.setState({loading:true, errorMessage:''});
         try{
-        const accounts = await web3.eth.getAccounts();
-     await factory.methods.
-        createProductToTrack(
-            this.state.product_name, 
-            this.state.product_type,
-            this.state.product_number,
-            this.state.product_secret,
-            this.state.product_location
-        ). send({
-            from: accounts[0]
-        });
-        const PAddress= await factory.methods.newTrack().call();
-  console.log(PAddress);
-    this.setState({address:PAddress});
-            
-      console.log(`This is the contract address${this.state.address}`)
-    }catch (err){
+                const accounts = await web3.eth.getAccounts();
+                await factory.methods.
+                createProductToTrack(
+                    this.state.product_name, 
+                    this.state.product_type,
+                    this.state.product_number,
+                    this.state.product_secret,
+                    this.state.product_location
+                ). send({
+                    from: accounts[0]
+                });
+                const PAddress= await factory.methods.newTrack().call();
+                console.log(PAddress);
+                this.setState({address:PAddress});
+                    
+                console.log(`This is the contract address${this.state.address}`)
+        }catch (err){
             this.setState({errorMessage:err.message});
     }
             

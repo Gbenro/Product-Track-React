@@ -3,6 +3,19 @@ import {Menu, Input} from 'semantic-ui-react';
 import {Link} from '../routes';
 
 export default() =>{
+
+//   onChange=(event)=>{
+//     this.setState({productAddress:event.target.value})
+// }
+
+// onSubmit= async (event)=>{
+//   event.preventDefault();
+ 
+//   Router.pushRoute(`/trackPages/${this.state.productAddress}`);
+ 
+  //}
+  
+
     
     return (
         <div>
@@ -33,11 +46,11 @@ export default() =>{
             </Link>
             
             <Menu.Menu position='right'>
-              <Menu.Item>
+              <Menu.Item >
                 <Input icon='search'
                  placeholder='Search 0x00'
                  // value= {this.state.address}
-               // onChange= {event =>this.setState({address:event.target.value})}
+               //onChange= {event =>this.setState({address:event.target.value})}
                   />
 
                

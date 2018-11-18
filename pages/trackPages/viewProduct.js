@@ -13,9 +13,9 @@ class ViewProduct extends Component{
     
 
    static async getInitialProps(props){
-       console.log(props.query.address);
+     
         const productTrack = ProductTrack(props.query.address);
-console.log(productTrack);
+       
         const productDetail = await productTrack.methods.newProduct().call();
 
         console.log(productDetail[0]);
@@ -25,7 +25,8 @@ console.log(productTrack);
             product_type:productDetail[1],
             product_number:productDetail[2],
             product_secret: productDetail[3],
-            product_location:productDetail[4]
+            product_location:productDetail[4],
+            address: props.query.address
     
         };
         
@@ -37,7 +38,9 @@ console.log(productTrack);
         product_type,
         product_number,
         product_secret,
-        product_location
+        product_location,
+        address
+        
         
         } = this.props;
         
@@ -62,10 +65,17 @@ console.log(productTrack);
             {
                 header: "Product Location",
                 description:product_location
+            },
+            {
+                header: "Product Address",
+                description: address,
+                style:{overflowWrap:'break-word'}
+               
             }
         ];
+   
         return <Card.Group items={items} />;
-        console.log(this.product_name);
+      
     }
 
 

@@ -22,7 +22,7 @@ return(
       
         <Card.Header>Add New Product</Card.Header>
         <Card.Description>
-        Add a new product to track on the blockachain
+        Add a new product to track on the blockchain
         </Card.Description>
        
       </Card.Content>
@@ -89,7 +89,7 @@ return(
     return( 
         <Layout>
         <div >
-        <h1> Welcome To the Product Tracking on the Ethereum Blockchain</h1>
+        <h1> Welcome To Product Tracking on the Ethereum Blockchain</h1>
         {this.renderIndex()} 
         </div>
         </Layout>

@@ -20,13 +20,18 @@ class TrackProduct extends Component{
     onSubmit= async (event)=>{
         event.preventDefault();
         this.setState({loading:true});
-        console.log(this.state.productAddress);
- 
-           Router.pushRoute(`/trackPages/${this.state.productAddress}`);
+        try{
+        Router.pushRoute(`/trackPages/${this.state.productAddress}`);
+        }catch(err){
+            this.setState({errorMessage:err.message});
+        }
+        //this.setState({loading:false});
     } 
 
     
-    
+    onChange=(event)=>{
+        this.setState({productAddress:event.target.value})
+    }
 
     render(){
         return (
@@ -37,7 +42,7 @@ class TrackProduct extends Component{
                 <input 
                 placeholder= 'Product Address'
                 value= {this.state.productAddress}
-                onChange= {event =>this.setState({productAddress:event.target.value})}
+                onChange= {this.onChange}
                 />
                 </Form.Field>
                 <Message error header= "Oops!" content = {this.state.errorMessage}/>
