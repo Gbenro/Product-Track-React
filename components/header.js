@@ -49,8 +49,7 @@ export default() =>{
               <Menu.Item >
                 <Input icon='search'
                  placeholder='Search 0x00'
-                 // value= {this.state.address}
-               //onChange= {event =>this.setState({address:event.target.value})}
+                 
                   />
 
                
